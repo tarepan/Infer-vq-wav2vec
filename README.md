@@ -28,13 +28,12 @@ import torch, torchaudio
 import librosa
 
 wave, sr = librosa.load("<your_audio>.wav", sr=None, mono=True)
-wave = torchaudio.functional.resample(torch.from_numpy(wave), orig_freq=sr, new_freq=16000)
+wave = torchaudio.functional.resample(torch.from_numpy(wave), orig_freq=sr, new_freq=16000).unsqueeze(0)
 
 model = torch.hub.load("tarepan/Infer-vq-wav2vec:v1.0.0", "vqw2v_unit", trust_repo=True)
 pad   = torch.hub.load("tarepan/Infer-vq-wav2vec:v1.0.0", "vqw2v_pad",  trust_repo=True)
 
 z_series, q_series, q_idx_seriesscore = model(pad(wave))
-# tensor([3.7730])
 ```
 
 ## How to Use
@@ -53,7 +52,7 @@ Then, pass tensor of ***16kHz*** speeches :: (Batch, Time) to the model with pad
 
 ```python
 waves_tensor = torch.rand((2, 16000)) # Two speeches, each 1 sec (sr=16,000)
-z_series, q_series, q_idx_seriesscore = model(pad(wave))
+z_series, q_series, q_idx_seriesscore = model(pad(waves_tensor))
 ```
 
 3 feature series will be returned:

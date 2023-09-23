@@ -27,7 +27,7 @@ class VQWav2VecUnit(nn.Module):
         Returns:
             z_series     :: (B, Frame=frm100hz, Feat=512) - Continuous latent       series
             q_series     :: (B, Frame=frm100hz, Feat=512) - Discrete   latent       series
-            q_idx_series :: (B, Frame=frm100hz)           - Discrete   latent index series
+            q_idx_series :: (B, Frame=frm100hz, Group=2)  - Discrete   latent index series
         """
 
         z_series = self.down_conv(wave)
