@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vqwav2vec"
-version = "0.0.0"
+version = "0.0.1"
 description = "Easy-to-Use vq-wav2vec inference model"
 authors = ["tarepan"]
 readme = "README.md"
@@ -13,6 +13,7 @@ python = "^3.10"
 
 [tool.poetry.dev-dependencies]
 pytest = "7.*"
+# s3prl = "^0.4.10"
 
 [build-system]
 requires = ["poetry-core"]
@@ -23,4 +24,5 @@ disable = [
   # This is opinionated
   "line-too-long",
   "pointless-string-statement",
+  "no-member",
 ]
