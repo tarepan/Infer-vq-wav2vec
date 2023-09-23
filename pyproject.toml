@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vqwav2vec"
-version = "0.0.1"
+version = "1.0.0"
 description = "Easy-to-Use vq-wav2vec inference model"
 authors = ["tarepan"]
 readme = "README.md"
